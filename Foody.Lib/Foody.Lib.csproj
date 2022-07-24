@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Virtio\Desktop\Foody\Foody\Foody.Lib.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80F91C95-8AC6-48E1-A5B1-9C1621E55B9D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Foody.Lib</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Foody</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MigraDoc.DocumentObjectModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfSharpStand.MigraDoc.DocumentObjectModel.NetStandard.1.0.0\lib\netstandard2.0\MigraDoc.DocumentObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfSharpStand.MigraDoc.Rendering.NetStandard.1.0.0\lib\netstandard2.0\MigraDoc.Rendering.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="zxing, Version=0.16.8.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.8\lib\net461\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.8.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.8\lib\net461\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Generic\RecipeExporter.cs" />
+    <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\GroceriesCollection.cs" />
+    <Compile Include="Models\HistoryRecipe.cs" />
+    <Compile Include="Models\MealData.cs" />
+    <Compile Include="Models\MealGenerator.cs" />
+    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\RecipeBindData.cs" />
+    <Compile Include="Models\RecipeContent.cs" />
+    <Compile Include="IO\Database.cs" />
+    <Compile Include="IO\TXT\Exporter.cs" />
+    <Compile Include="IO\QrCode\Exporter.cs" />
+    <Compile Include="IO\PDF\Exporter.cs" />
+    <Compile Include="IO\PDF\PdfFormater.cs" />
+    <Compile Include="Models\ContentsByMeal.cs" />
+    <Compile Include="Generic\CSVParser.cs" />
+    <Compile Include="Generic\SearchEngine.cs" />
+    <Compile Include="Generic\Interfaces\IExporter.cs" />
+    <Compile Include="Generic\Consts.cs" />
+    <Compile Include="Generic\ContentTagConverter.cs" />
+    <Compile Include="Generic\Delegates.cs" />
+    <Compile Include="Generic\IndexCollection.cs" />
+    <Compile Include="Generic\Tag.cs" />
+    <Compile Include="Generic\ContentTag.cs" />
+    <Compile Include="Generic\TagConverter.cs" />
+    <Compile Include="Generic\Tools.cs" />
+    <Compile Include="Generic\ContentComparer.cs" />
+    <Compile Include="Generic\RecipeComparer.cs" />
+    <Compile Include="Generic\Unit.cs" />
+    <Compile Include="Generic\UnitConverter.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SharpZipLib\ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

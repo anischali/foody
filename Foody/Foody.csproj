@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Virtio\Desktop\Foody\Foody\Foody.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C28A49E-0D85-4BEC-9B1E-7DCA105F9479}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>Foody</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Foody</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlHelpers.cs" />
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Settings.Designer.cs" />
+    <Compile Include="Primitives\CheckComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Primitives\CheckComboBoxItem.cs" />
+    <Compile Include="Controls\AddRecipePopup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExporterPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GenerateHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GeneratePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MealsToolTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\QrCodeRenderer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RecipeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RecipeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SearchHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Components.cs" />
+    <Compile Include="Controls\TagsLabelsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="!AvaloniaResources" />
+    <EmbeddedResource Include="Controls\AddRecipePopup.resx" />
+    <EmbeddedResource Include="Controls\ExporterPanel.resx" />
+    <EmbeddedResource Include="Controls\GenerateHeader.resx" />
+    <EmbeddedResource Include="Controls\GeneratePanel.resx" />
+    <EmbeddedResource Include="Controls\MealsToolTip.resx" />
+    <EmbeddedResource Include="Controls\QrCodeRenderer.resx" />
+    <EmbeddedResource Include="Controls\RecipeControl.resx" />
+    <EmbeddedResource Include="Controls\RecipeList.resx" />
+    <EmbeddedResource Include="Controls\SearchHeader.resx" />
+    <EmbeddedResource Include="Controls\TagsLabelsControl.resx" />
+    <EmbeddedResource Include="MainWindow.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="Resources\LabelsNotSelected.png" />
+    <EmbeddedResource Include="Resources\LabelsSelected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Foody.Lib\Foody.Lib.csproj">
+      <Project>{80f91c95-8ac6-48e1-a5b1-9c1621e55b9d}</Project>
+      <Name>Foody.Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
