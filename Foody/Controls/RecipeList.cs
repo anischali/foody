@@ -103,12 +103,12 @@ namespace Foody.Controls
       if (this.searchHeader1.Active)
       {
         if (this.RecipesDataGridView.InvokeRequired)
-          this.RecipesDataGridView.Invoke((Delegate) (() => this.PopulateDataGridViewWithRecipes(this.searchHeader1.Engine.SearchResult, Database.AllMenus)));
+          this.RecipesDataGridView.Invoke(new Action(() => this.PopulateDataGridViewWithRecipes(this.searchHeader1.Engine.SearchResult, Database.AllMenus)));
         else
           this.PopulateDataGridViewWithRecipes(this.searchHeader1.Engine.SearchResult, Database.AllMenus);
       }
       else if (this.RecipesDataGridView.InvokeRequired)
-        this.RecipesDataGridView.Invoke((Delegate) (() => this.PopulateDataGridViewWithRecipes(Database.AllMenus)));
+        this.RecipesDataGridView.Invoke(new Action(() => this.PopulateDataGridViewWithRecipes(Database.AllMenus)));
       else
         this.PopulateDataGridViewWithRecipes(Database.AllMenus);
     }

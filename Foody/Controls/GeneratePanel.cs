@@ -114,7 +114,7 @@ namespace Foody.Controls
       this.searcher.AsyncRefresh += (EventHandler) ((s, e) =>
       {
         if (this.MealsDataGridView.InvokeRequired)
-          this.MealsDataGridView.Invoke((Delegate) (() => this.ChangeMealsAfterTagEdit()));
+          this.MealsDataGridView.Invoke(new Action(() => this.ChangeMealsAfterTagEdit()));
         else
           this.ChangeMealsAfterTagEdit();
       });
