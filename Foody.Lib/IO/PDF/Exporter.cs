@@ -96,7 +96,7 @@ namespace Foody.IO.PDF
     public void Save(string path)
     {
       this.rendrer.RenderDocument();
-      //this.rendrer.PdfDocument.Save(path);
+      this.rendrer.PdfDocument.Save(path);
     }
   }
 }
