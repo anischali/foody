@@ -59,7 +59,8 @@ namespace Foody.Controls
     private DataGridViewTextBoxColumn Total;
     private DataGridViewTextBoxColumn Unit;
     private DataGridViewButtonColumn moins;
-    private DataGridViewButtonColumn Plus;
+        private SplitContainer splitContainer1;
+        private DataGridViewButtonColumn Plus;
 
     public GeneratePanel()
     {
@@ -364,388 +365,532 @@ namespace Foody.Controls
 
     private void InitializeComponent()
     {
-      this.components = (IContainer) new Container();
-      DataGridViewCellStyle gridViewCellStyle1 = new DataGridViewCellStyle();
-      DataGridViewCellStyle gridViewCellStyle2 = new DataGridViewCellStyle();
-      DataGridViewCellStyle gridViewCellStyle3 = new DataGridViewCellStyle();
-      DataGridViewCellStyle gridViewCellStyle4 = new DataGridViewCellStyle();
-      DataGridViewCellStyle gridViewCellStyle5 = new DataGridViewCellStyle();
-      DataGridViewCellStyle gridViewCellStyle6 = new DataGridViewCellStyle();
-      DataGridViewCellStyle gridViewCellStyle7 = new DataGridViewCellStyle();
-      DataGridViewCellStyle gridViewCellStyle8 = new DataGridViewCellStyle();
-      this.panel1 = new Panel();
-      this.MealsDataGridView = new DataGridView();
-      this.Num = new DataGridViewTextBoxColumn();
-      this.Nom = new DataGridViewTextBoxColumn();
-      this.NbPersonne = new DataGridViewTextBoxColumn();
-      this.Tags = new DataGridViewButtonColumn();
-      this.Change = new DataGridViewButtonColumn();
-      this.Remove = new DataGridViewButtonColumn();
-      this.panel3 = new Panel();
-      this.footerPanel = new Panel();
-      this.btnGenerate = new Button();
-      this.panel6 = new Panel();
-      this.contentsGridView = new DataGridView();
-      this.NumContent = new DataGridViewTextBoxColumn();
-      this.ContentName = new DataGridViewTextBoxColumn();
-      this.ContentQuantity = new DataGridViewTextBoxColumn();
-      this.EnStock = new DataGridViewTextBoxColumn();
-      this.Total = new DataGridViewTextBoxColumn();
-      this.Unit = new DataGridViewTextBoxColumn();
-      this.moins = new DataGridViewButtonColumn();
-      this.Plus = new DataGridViewButtonColumn();
-      this.panel4 = new Panel();
-      this.TagsPanel = new Panel();
-      this.panel8 = new Panel();
-      this.NotSelectedTags = new FlowLayoutPanel();
-      this.SelectedTags = new FlowLayoutPanel();
-      this.panel7 = new Panel();
-      this.btnValidate = new Button();
-      this.btnAddContents = new Button();
-      this.panel2 = new Panel();
-      this.btnAddRecipe = new Button();
-      this.label1 = new Label();
-      this.recipeBindDataBindingSource = new BindingSource(this.components);
-      this.panel1.SuspendLayout();
-      ((ISupportInitialize) this.MealsDataGridView).BeginInit();
-      this.panel3.SuspendLayout();
-      this.footerPanel.SuspendLayout();
-      this.panel6.SuspendLayout();
-      ((ISupportInitialize) this.contentsGridView).BeginInit();
-      this.panel4.SuspendLayout();
-      this.TagsPanel.SuspendLayout();
-      this.panel8.SuspendLayout();
-      this.panel7.SuspendLayout();
-      this.panel2.SuspendLayout();
-      ((ISupportInitialize) this.recipeBindDataBindingSource).BeginInit();
-      this.SuspendLayout();
-      this.panel1.Controls.Add((Control) this.MealsDataGridView);
-      this.panel1.Dock = DockStyle.Top;
-      this.panel1.Location = new Point(0, 0);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new Size(823, 165);
-      this.panel1.TabIndex = 0;
-      this.MealsDataGridView.AllowUserToAddRows = false;
-      this.MealsDataGridView.AllowUserToDeleteRows = false;
-      this.MealsDataGridView.AllowUserToResizeColumns = false;
-      this.MealsDataGridView.AllowUserToResizeRows = false;
-      gridViewCellStyle1.BackColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle1.ForeColor = Color.White;
-      gridViewCellStyle1.SelectionBackColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle1.SelectionForeColor = Color.White;
-      this.MealsDataGridView.AlternatingRowsDefaultCellStyle = gridViewCellStyle1;
-      this.MealsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-      this.MealsDataGridView.BackgroundColor = Color.FromArgb(37, 40, 42);
-      this.MealsDataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-      gridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-      gridViewCellStyle2.BackColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 7.8f, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
-      gridViewCellStyle2.ForeColor = Color.White;
-      gridViewCellStyle2.SelectionBackColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle2.SelectionForeColor = Color.White;
-      gridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-      this.MealsDataGridView.ColumnHeadersDefaultCellStyle = gridViewCellStyle2;
-      this.MealsDataGridView.ColumnHeadersHeight = 40;
-      this.MealsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-      this.MealsDataGridView.Columns.AddRange((DataGridViewColumn) this.Num, (DataGridViewColumn) this.Nom, (DataGridViewColumn) this.NbPersonne, (DataGridViewColumn) this.Tags, (DataGridViewColumn) this.Change, (DataGridViewColumn) this.Remove);
-      gridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-      gridViewCellStyle3.BackColor = Color.FromArgb(37, 40, 42);
-      gridViewCellStyle3.Font = new Font("Arial", 10.2f, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
-      gridViewCellStyle3.ForeColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle3.SelectionBackColor = Color.FromArgb(37, 40, 42);
-      gridViewCellStyle3.SelectionForeColor = Color.White;
-      gridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-      this.MealsDataGridView.DefaultCellStyle = gridViewCellStyle3;
-      this.MealsDataGridView.Dock = DockStyle.Fill;
-      this.MealsDataGridView.EnableHeadersVisualStyles = false;
-      this.MealsDataGridView.GridColor = Color.White;
-      this.MealsDataGridView.Location = new Point(0, 0);
-      this.MealsDataGridView.Margin = new Padding(2, 2, 2, 2);
-      this.MealsDataGridView.Name = "MealsDataGridView";
-      this.MealsDataGridView.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-      this.MealsDataGridView.RowHeadersVisible = false;
-      this.MealsDataGridView.RowHeadersWidth = 51;
-      gridViewCellStyle4.BackColor = Color.FromArgb(37, 40, 42);
-      gridViewCellStyle4.ForeColor = Color.White;
-      gridViewCellStyle4.SelectionBackColor = Color.FromArgb(37, 40, 42);
-      gridViewCellStyle4.SelectionForeColor = Color.White;
-      this.MealsDataGridView.RowsDefaultCellStyle = gridViewCellStyle4;
-      this.MealsDataGridView.RowTemplate.Height = 24;
-      this.MealsDataGridView.Size = new Size(823, 165);
-      this.MealsDataGridView.TabIndex = 1;
-      this.Num.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.Num.HeaderText = "N°";
-      this.Num.MinimumWidth = 6;
-      this.Num.Name = "Num";
-      this.Num.ReadOnly = true;
-      this.Num.Width = 30;
-      this.Nom.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.Nom.HeaderText = "Nom";
-      this.Nom.MinimumWidth = 6;
-      this.Nom.Name = "Nom";
-      this.Nom.ReadOnly = true;
-      this.Nom.SortMode = DataGridViewColumnSortMode.NotSortable;
-      this.NbPersonne.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.NbPersonne.HeaderText = "Quantité";
-      this.NbPersonne.MinimumWidth = 6;
-      this.NbPersonne.Name = "NbPersonne";
-      this.NbPersonne.SortMode = DataGridViewColumnSortMode.NotSortable;
-      this.NbPersonne.Width = 70;
-      this.Tags.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.Tags.FlatStyle = FlatStyle.Flat;
-      this.Tags.HeaderText = "Tags";
-      this.Tags.MinimumWidth = 6;
-      this.Tags.Name = "Tags";
-      this.Tags.ReadOnly = true;
-      this.Tags.Width = 70;
-      this.Change.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.Change.FlatStyle = FlatStyle.Flat;
-      this.Change.HeaderText = "Changer";
-      this.Change.MinimumWidth = 6;
-      this.Change.Name = "Change";
-      this.Change.ReadOnly = true;
-      this.Change.Width = 70;
-      this.Remove.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.Remove.FlatStyle = FlatStyle.Flat;
-      this.Remove.HeaderText = "Suppr.";
-      this.Remove.MinimumWidth = 6;
-      this.Remove.Name = "Remove";
-      this.Remove.Width = 70;
-      this.panel3.Controls.Add((Control) this.footerPanel);
-      this.panel3.Controls.Add((Control) this.panel6);
-      this.panel3.Dock = DockStyle.Fill;
-      this.panel3.Location = new Point(0, 229);
-      this.panel3.Name = "panel3";
-      this.panel3.Size = new Size(823, 249);
-      this.panel3.TabIndex = 0;
-      this.footerPanel.Controls.Add((Control) this.btnGenerate);
-      this.footerPanel.Dock = DockStyle.Bottom;
-      this.footerPanel.Location = new Point(0, 220);
-      this.footerPanel.Name = "footerPanel";
-      this.footerPanel.Size = new Size(823, 29);
-      this.footerPanel.TabIndex = 1;
-      this.btnGenerate.Dock = DockStyle.Right;
-      this.btnGenerate.FlatStyle = FlatStyle.Flat;
-      this.btnGenerate.ForeColor = Color.FromArgb(228, 95, 1);
-      this.btnGenerate.Location = new Point(707, 0);
-      this.btnGenerate.Name = "btnGenerate";
-      this.btnGenerate.Size = new Size(116, 29);
-      this.btnGenerate.TabIndex = 2;
-      this.btnGenerate.Text = "Générer";
-      this.btnGenerate.UseVisualStyleBackColor = true;
-      this.panel6.Controls.Add((Control) this.contentsGridView);
-      this.panel6.Dock = DockStyle.Fill;
-      this.panel6.Location = new Point(0, 0);
-      this.panel6.Name = "panel6";
-      this.panel6.Size = new Size(823, 249);
-      this.panel6.TabIndex = 2;
-      this.contentsGridView.AllowUserToAddRows = false;
-      this.contentsGridView.AllowUserToDeleteRows = false;
-      this.contentsGridView.AllowUserToResizeColumns = false;
-      this.contentsGridView.AllowUserToResizeRows = false;
-      gridViewCellStyle5.BackColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle5.ForeColor = Color.White;
-      gridViewCellStyle5.SelectionBackColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle5.SelectionForeColor = Color.White;
-      this.contentsGridView.AlternatingRowsDefaultCellStyle = gridViewCellStyle5;
-      this.contentsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-      this.contentsGridView.BackgroundColor = Color.FromArgb(37, 40, 42);
-      this.contentsGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-      gridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-      gridViewCellStyle6.BackColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 7.8f, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
-      gridViewCellStyle6.ForeColor = Color.White;
-      gridViewCellStyle6.SelectionBackColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle6.SelectionForeColor = Color.White;
-      gridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-      this.contentsGridView.ColumnHeadersDefaultCellStyle = gridViewCellStyle6;
-      this.contentsGridView.ColumnHeadersHeight = 40;
-      this.contentsGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-      this.contentsGridView.Columns.AddRange((DataGridViewColumn) this.NumContent, (DataGridViewColumn) this.ContentName, (DataGridViewColumn) this.ContentQuantity, (DataGridViewColumn) this.EnStock, (DataGridViewColumn) this.Total, (DataGridViewColumn) this.Unit, (DataGridViewColumn) this.moins, (DataGridViewColumn) this.Plus);
-      gridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-      gridViewCellStyle7.BackColor = Color.FromArgb(37, 40, 42);
-      gridViewCellStyle7.Font = new Font("Arial", 10.2f, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
-      gridViewCellStyle7.ForeColor = Color.FromArgb(37, 37, 38);
-      gridViewCellStyle7.SelectionBackColor = Color.FromArgb(37, 40, 42);
-      gridViewCellStyle7.SelectionForeColor = Color.White;
-      gridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-      this.contentsGridView.DefaultCellStyle = gridViewCellStyle7;
-      this.contentsGridView.Dock = DockStyle.Fill;
-      this.contentsGridView.EnableHeadersVisualStyles = false;
-      this.contentsGridView.GridColor = Color.White;
-      this.contentsGridView.Location = new Point(0, 0);
-      this.contentsGridView.Margin = new Padding(2, 2, 2, 2);
-      this.contentsGridView.Name = "contentsGridView";
-      this.contentsGridView.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-      this.contentsGridView.RowHeadersVisible = false;
-      this.contentsGridView.RowHeadersWidth = 51;
-      gridViewCellStyle8.BackColor = Color.FromArgb(37, 40, 42);
-      gridViewCellStyle8.ForeColor = Color.White;
-      gridViewCellStyle8.SelectionBackColor = Color.FromArgb(37, 40, 42);
-      gridViewCellStyle8.SelectionForeColor = Color.White;
-      this.contentsGridView.RowsDefaultCellStyle = gridViewCellStyle8;
-      this.contentsGridView.RowTemplate.Height = 24;
-      this.contentsGridView.Size = new Size(823, 249);
-      this.contentsGridView.TabIndex = 1;
-      this.NumContent.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.NumContent.HeaderText = "N°";
-      this.NumContent.MinimumWidth = 6;
-      this.NumContent.Name = "NumContent";
-      this.NumContent.ReadOnly = true;
-      this.NumContent.Width = 30;
-      this.ContentName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.ContentName.HeaderText = "Nom";
-      this.ContentName.MinimumWidth = 6;
-      this.ContentName.Name = "ContentName";
-      this.ContentName.ReadOnly = true;
-      this.ContentName.SortMode = DataGridViewColumnSortMode.NotSortable;
-      this.ContentQuantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.ContentQuantity.HeaderText = "Quantité";
-      this.ContentQuantity.MinimumWidth = 6;
-      this.ContentQuantity.Name = "ContentQuantity";
-      this.ContentQuantity.ReadOnly = true;
-      this.ContentQuantity.SortMode = DataGridViewColumnSortMode.NotSortable;
-      this.ContentQuantity.Width = 200;
-      this.EnStock.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.EnStock.HeaderText = "En stock";
-      this.EnStock.MinimumWidth = 6;
-      this.EnStock.Name = "EnStock";
-      this.EnStock.Width = 60;
-      this.Total.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.Total.HeaderText = "Total";
-      this.Total.MinimumWidth = 6;
-      this.Total.Name = "Total";
-      this.Total.ReadOnly = true;
-      this.Total.Width = 60;
-      this.Unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.Unit.HeaderText = "Unité";
-      this.Unit.MinimumWidth = 6;
-      this.Unit.Name = "Unit";
-      this.Unit.ReadOnly = true;
-      this.Unit.SortMode = DataGridViewColumnSortMode.NotSortable;
-      this.Unit.Width = 60;
-      this.moins.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.moins.FlatStyle = FlatStyle.Flat;
-      this.moins.HeaderText = "➖";
-      this.moins.MinimumWidth = 6;
-      this.moins.Name = "moins";
-      this.moins.ReadOnly = true;
-      this.moins.Width = 32;
-      this.Plus.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-      this.Plus.FlatStyle = FlatStyle.Flat;
-      this.Plus.HeaderText = "➕";
-      this.Plus.MinimumWidth = 6;
-      this.Plus.Name = "Plus";
-      this.Plus.ReadOnly = true;
-      this.Plus.Width = 32;
-      this.panel4.Controls.Add((Control) this.TagsPanel);
-      this.panel4.Controls.Add((Control) this.panel7);
-      this.panel4.Controls.Add((Control) this.panel2);
-      this.panel4.Dock = DockStyle.Top;
-      this.panel4.Location = new Point(0, 165);
-      this.panel4.Name = "panel4";
-      this.panel4.Size = new Size(823, 64);
-      this.panel4.TabIndex = 1;
-      this.TagsPanel.Controls.Add((Control) this.panel8);
-      this.TagsPanel.Dock = DockStyle.Fill;
-      this.TagsPanel.Location = new Point(103, 0);
-      this.TagsPanel.Name = "TagsPanel";
-      this.TagsPanel.Size = new Size(596, 64);
-      this.TagsPanel.TabIndex = 6;
-      this.panel8.Controls.Add((Control) this.NotSelectedTags);
-      this.panel8.Controls.Add((Control) this.SelectedTags);
-      this.panel8.Dock = DockStyle.Fill;
-      this.panel8.Location = new Point(0, 0);
-      this.panel8.Name = "panel8";
-      this.panel8.Size = new Size(596, 64);
-      this.panel8.TabIndex = 2;
-      this.NotSelectedTags.AutoScroll = true;
-      this.NotSelectedTags.Dock = DockStyle.Fill;
-      this.NotSelectedTags.Location = new Point(306, 0);
-      this.NotSelectedTags.Name = "NotSelectedTags";
-      this.NotSelectedTags.Size = new Size(290, 64);
-      this.NotSelectedTags.TabIndex = 2;
-      this.NotSelectedTags.Visible = false;
-      this.SelectedTags.AutoScroll = true;
-      this.SelectedTags.Dock = DockStyle.Left;
-      this.SelectedTags.Location = new Point(0, 0);
-      this.SelectedTags.Name = "SelectedTags";
-      this.SelectedTags.Size = new Size(306, 64);
-      this.SelectedTags.TabIndex = 1;
-      this.panel7.Controls.Add((Control) this.btnValidate);
-      this.panel7.Controls.Add((Control) this.btnAddContents);
-      this.panel7.Dock = DockStyle.Right;
-      this.panel7.Location = new Point(699, 0);
-      this.panel7.Name = "panel7";
-      this.panel7.Size = new Size(124, 64);
-      this.panel7.TabIndex = 5;
-      this.btnValidate.FlatStyle = FlatStyle.Flat;
-      this.btnValidate.ForeColor = Color.FromArgb(228, 95, 1);
-      this.btnValidate.Location = new Point(5, 0);
-      this.btnValidate.Name = "btnValidate";
-      this.btnValidate.Size = new Size(116, 23);
-      this.btnValidate.TabIndex = 3;
-      this.btnValidate.Text = "Valider";
-      this.btnValidate.UseVisualStyleBackColor = true;
-      this.btnAddContents.FlatStyle = FlatStyle.Flat;
-      this.btnAddContents.Font = new Font("Arial", 8.25f, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
-      this.btnAddContents.ForeColor = Color.FromArgb(228, 95, 1);
-      this.btnAddContents.Location = new Point(97, 40);
-      this.btnAddContents.Name = "btnAddContents";
-      this.btnAddContents.Size = new Size(24, 24);
-      this.btnAddContents.TabIndex = 1;
-      this.btnAddContents.Text = "➕";
-      this.btnAddContents.UseVisualStyleBackColor = true;
-      this.panel2.Controls.Add((Control) this.btnAddRecipe);
-      this.panel2.Controls.Add((Control) this.label1);
-      this.panel2.Dock = DockStyle.Left;
-      this.panel2.Location = new Point(0, 0);
-      this.panel2.Name = "panel2";
-      this.panel2.Size = new Size(103, 64);
-      this.panel2.TabIndex = 4;
-      this.btnAddRecipe.FlatStyle = FlatStyle.Flat;
-      this.btnAddRecipe.Font = new Font("Arial", 8.25f, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
-      this.btnAddRecipe.ForeColor = Color.FromArgb(228, 95, 1);
-      this.btnAddRecipe.Location = new Point(3, 3);
-      this.btnAddRecipe.Name = "btnAddRecipe";
-      this.btnAddRecipe.Size = new Size(24, 24);
-      this.btnAddRecipe.TabIndex = 2;
-      this.btnAddRecipe.Text = "➕";
-      this.btnAddRecipe.UseVisualStyleBackColor = true;
-      this.btnAddRecipe.Click += new EventHandler(this.btnAddRecipe_Click);
-      this.label1.AutoSize = true;
-      this.label1.FlatStyle = FlatStyle.Flat;
-      this.label1.Font = new Font("Sitka Subheading", 9.749999f, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
-      this.label1.ForeColor = Color.FromArgb(228, 95, 1);
-      this.label1.Location = new Point(3, 42);
-      this.label1.Name = "label1";
-      this.label1.Size = new Size(100, 19);
-      this.label1.TabIndex = 0;
-      this.label1.Text = "Liste de courses";
-      this.recipeBindDataBindingSource.DataSource = (object) typeof (RecipeBindData);
-      this.AutoScaleDimensions = new SizeF(6f, 13f);
-      this.AutoScaleMode = AutoScaleMode.Font;
-      this.BackColor = Color.FromArgb(37, 37, 38);
-      this.Controls.Add((Control) this.panel3);
-      this.Controls.Add((Control) this.panel4);
-      this.Controls.Add((Control) this.panel1);
-      this.ForeColor = Color.FromArgb(37, 37, 38);
-      this.Name = "GeneratePanel";
-      this.Size = new Size(823, 478);
-      this.panel1.ResumeLayout(false);
-      ((ISupportInitialize) this.MealsDataGridView).EndInit();
-      this.panel3.ResumeLayout(false);
-      this.footerPanel.ResumeLayout(false);
-      this.panel6.ResumeLayout(false);
-      ((ISupportInitialize) this.contentsGridView).EndInit();
-      this.panel4.ResumeLayout(false);
-      this.TagsPanel.ResumeLayout(false);
-      this.panel8.ResumeLayout(false);
-      this.panel7.ResumeLayout(false);
-      this.panel2.ResumeLayout(false);
-      this.panel2.PerformLayout();
-      ((ISupportInitialize) this.recipeBindDataBindingSource).EndInit();
-      this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.MealsDataGridView = new System.Windows.Forms.DataGridView();
+            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NbPersonne = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tags = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Change = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.footerPanel = new System.Windows.Forms.Panel();
+            this.btnGenerate = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.contentsGridView = new System.Windows.Forms.DataGridView();
+            this.NumContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContentQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moins = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Plus = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.TagsPanel = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.NotSelectedTags = new System.Windows.Forms.FlowLayoutPanel();
+            this.SelectedTags = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.btnValidate = new System.Windows.Forms.Button();
+            this.btnAddContents = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAddRecipe = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.recipeBindDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MealsDataGridView)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.footerPanel.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contentsGridView)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.TagsPanel.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recipeBindDataBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.MealsDataGridView);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(823, 165);
+            this.panel1.TabIndex = 0;
+            // 
+            // MealsDataGridView
+            // 
+            this.MealsDataGridView.AllowUserToAddRows = false;
+            this.MealsDataGridView.AllowUserToDeleteRows = false;
+            this.MealsDataGridView.AllowUserToResizeColumns = false;
+            this.MealsDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.MealsDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.MealsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.MealsDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            this.MealsDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MealsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.MealsDataGridView.ColumnHeadersHeight = 40;
+            this.MealsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.MealsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Num,
+            this.Nom,
+            this.NbPersonne,
+            this.Tags,
+            this.Change,
+            this.Remove});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MealsDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.MealsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MealsDataGridView.EnableHeadersVisualStyles = false;
+            this.MealsDataGridView.GridColor = System.Drawing.Color.White;
+            this.MealsDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.MealsDataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.MealsDataGridView.Name = "MealsDataGridView";
+            this.MealsDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.MealsDataGridView.RowHeadersVisible = false;
+            this.MealsDataGridView.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.MealsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.MealsDataGridView.RowTemplate.Height = 24;
+            this.MealsDataGridView.Size = new System.Drawing.Size(823, 165);
+            this.MealsDataGridView.TabIndex = 1;
+            // 
+            // Num
+            // 
+            this.Num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Num.HeaderText = "N°";
+            this.Num.MinimumWidth = 6;
+            this.Num.Name = "Num";
+            this.Num.ReadOnly = true;
+            this.Num.Width = 30;
+            // 
+            // Nom
+            // 
+            this.Nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nom.HeaderText = "Nom";
+            this.Nom.MinimumWidth = 6;
+            this.Nom.Name = "Nom";
+            this.Nom.ReadOnly = true;
+            this.Nom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // NbPersonne
+            // 
+            this.NbPersonne.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NbPersonne.HeaderText = "Quantité";
+            this.NbPersonne.MinimumWidth = 6;
+            this.NbPersonne.Name = "NbPersonne";
+            this.NbPersonne.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NbPersonne.Width = 70;
+            // 
+            // Tags
+            // 
+            this.Tags.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Tags.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Tags.HeaderText = "Tags";
+            this.Tags.MinimumWidth = 6;
+            this.Tags.Name = "Tags";
+            this.Tags.ReadOnly = true;
+            this.Tags.Width = 70;
+            // 
+            // Change
+            // 
+            this.Change.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Change.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Change.HeaderText = "Changer";
+            this.Change.MinimumWidth = 6;
+            this.Change.Name = "Change";
+            this.Change.ReadOnly = true;
+            this.Change.Width = 70;
+            // 
+            // Remove
+            // 
+            this.Remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Remove.HeaderText = "Suppr.";
+            this.Remove.MinimumWidth = 6;
+            this.Remove.Name = "Remove";
+            this.Remove.Width = 70;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel6);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 229);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(823, 249);
+            this.panel3.TabIndex = 0;
+            // 
+            // footerPanel
+            // 
+            this.footerPanel.Controls.Add(this.btnGenerate);
+            this.footerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.footerPanel.Location = new System.Drawing.Point(0, 0);
+            this.footerPanel.Name = "footerPanel";
+            this.footerPanel.Size = new System.Drawing.Size(823, 29);
+            this.footerPanel.TabIndex = 1;
+            // 
+            // btnGenerate
+            // 
+            this.btnGenerate.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(95)))), ((int)(((byte)(1)))));
+            this.btnGenerate.Location = new System.Drawing.Point(707, 0);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.Size = new System.Drawing.Size(116, 29);
+            this.btnGenerate.TabIndex = 2;
+            this.btnGenerate.Text = "Générer";
+            this.btnGenerate.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.splitContainer1);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(823, 249);
+            this.panel6.TabIndex = 2;
+            // 
+            // contentsGridView
+            // 
+            this.contentsGridView.AllowUserToAddRows = false;
+            this.contentsGridView.AllowUserToDeleteRows = false;
+            this.contentsGridView.AllowUserToResizeColumns = false;
+            this.contentsGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.contentsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.contentsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.contentsGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            this.contentsGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.contentsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.contentsGridView.ColumnHeadersHeight = 40;
+            this.contentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.contentsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NumContent,
+            this.ContentName,
+            this.ContentQuantity,
+            this.EnStock,
+            this.Total,
+            this.Unit,
+            this.moins,
+            this.Plus});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.contentsGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            this.contentsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contentsGridView.EnableHeadersVisualStyles = false;
+            this.contentsGridView.GridColor = System.Drawing.Color.White;
+            this.contentsGridView.Location = new System.Drawing.Point(0, 0);
+            this.contentsGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.contentsGridView.Name = "contentsGridView";
+            this.contentsGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.contentsGridView.RowHeadersVisible = false;
+            this.contentsGridView.RowHeadersWidth = 51;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(40)))), ((int)(((byte)(42)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.contentsGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.contentsGridView.RowTemplate.Height = 24;
+            this.contentsGridView.Size = new System.Drawing.Size(823, 216);
+            this.contentsGridView.TabIndex = 1;
+            // 
+            // NumContent
+            // 
+            this.NumContent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NumContent.HeaderText = "N°";
+            this.NumContent.MinimumWidth = 6;
+            this.NumContent.Name = "NumContent";
+            this.NumContent.ReadOnly = true;
+            this.NumContent.Width = 30;
+            // 
+            // ContentName
+            // 
+            this.ContentName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ContentName.HeaderText = "Nom";
+            this.ContentName.MinimumWidth = 6;
+            this.ContentName.Name = "ContentName";
+            this.ContentName.ReadOnly = true;
+            this.ContentName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ContentQuantity
+            // 
+            this.ContentQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ContentQuantity.HeaderText = "Quantité";
+            this.ContentQuantity.MinimumWidth = 6;
+            this.ContentQuantity.Name = "ContentQuantity";
+            this.ContentQuantity.ReadOnly = true;
+            this.ContentQuantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ContentQuantity.Width = 200;
+            // 
+            // EnStock
+            // 
+            this.EnStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.EnStock.HeaderText = "En stock";
+            this.EnStock.MinimumWidth = 6;
+            this.EnStock.Name = "EnStock";
+            this.EnStock.Width = 60;
+            // 
+            // Total
+            // 
+            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 60;
+            // 
+            // Unit
+            // 
+            this.Unit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Unit.HeaderText = "Unité";
+            this.Unit.MinimumWidth = 6;
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            this.Unit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Unit.Width = 60;
+            // 
+            // moins
+            // 
+            this.moins.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.moins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.moins.HeaderText = "➖";
+            this.moins.MinimumWidth = 6;
+            this.moins.Name = "moins";
+            this.moins.ReadOnly = true;
+            this.moins.Width = 32;
+            // 
+            // Plus
+            // 
+            this.Plus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Plus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Plus.HeaderText = "➕";
+            this.Plus.MinimumWidth = 6;
+            this.Plus.Name = "Plus";
+            this.Plus.ReadOnly = true;
+            this.Plus.Width = 32;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.TagsPanel);
+            this.panel4.Controls.Add(this.panel7);
+            this.panel4.Controls.Add(this.panel2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 165);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(823, 64);
+            this.panel4.TabIndex = 1;
+            // 
+            // TagsPanel
+            // 
+            this.TagsPanel.Controls.Add(this.panel8);
+            this.TagsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TagsPanel.Location = new System.Drawing.Point(103, 0);
+            this.TagsPanel.Name = "TagsPanel";
+            this.TagsPanel.Size = new System.Drawing.Size(596, 64);
+            this.TagsPanel.TabIndex = 6;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.NotSelectedTags);
+            this.panel8.Controls.Add(this.SelectedTags);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(596, 64);
+            this.panel8.TabIndex = 2;
+            // 
+            // NotSelectedTags
+            // 
+            this.NotSelectedTags.AutoScroll = true;
+            this.NotSelectedTags.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NotSelectedTags.Location = new System.Drawing.Point(306, 0);
+            this.NotSelectedTags.Name = "NotSelectedTags";
+            this.NotSelectedTags.Size = new System.Drawing.Size(290, 64);
+            this.NotSelectedTags.TabIndex = 2;
+            this.NotSelectedTags.Visible = false;
+            // 
+            // SelectedTags
+            // 
+            this.SelectedTags.AutoScroll = true;
+            this.SelectedTags.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SelectedTags.Location = new System.Drawing.Point(0, 0);
+            this.SelectedTags.Name = "SelectedTags";
+            this.SelectedTags.Size = new System.Drawing.Size(306, 64);
+            this.SelectedTags.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.btnValidate);
+            this.panel7.Controls.Add(this.btnAddContents);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(699, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(124, 64);
+            this.panel7.TabIndex = 5;
+            // 
+            // btnValidate
+            // 
+            this.btnValidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValidate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(95)))), ((int)(((byte)(1)))));
+            this.btnValidate.Location = new System.Drawing.Point(5, 0);
+            this.btnValidate.Name = "btnValidate";
+            this.btnValidate.Size = new System.Drawing.Size(116, 23);
+            this.btnValidate.TabIndex = 3;
+            this.btnValidate.Text = "Valider";
+            this.btnValidate.UseVisualStyleBackColor = true;
+            // 
+            // btnAddContents
+            // 
+            this.btnAddContents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddContents.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddContents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(95)))), ((int)(((byte)(1)))));
+            this.btnAddContents.Location = new System.Drawing.Point(97, 40);
+            this.btnAddContents.Name = "btnAddContents";
+            this.btnAddContents.Size = new System.Drawing.Size(24, 24);
+            this.btnAddContents.TabIndex = 1;
+            this.btnAddContents.Text = "➕";
+            this.btnAddContents.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnAddRecipe);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(103, 64);
+            this.panel2.TabIndex = 4;
+            // 
+            // btnAddRecipe
+            // 
+            this.btnAddRecipe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddRecipe.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddRecipe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(95)))), ((int)(((byte)(1)))));
+            this.btnAddRecipe.Location = new System.Drawing.Point(3, 3);
+            this.btnAddRecipe.Name = "btnAddRecipe";
+            this.btnAddRecipe.Size = new System.Drawing.Size(24, 24);
+            this.btnAddRecipe.TabIndex = 2;
+            this.btnAddRecipe.Text = "➕";
+            this.btnAddRecipe.UseVisualStyleBackColor = true;
+            this.btnAddRecipe.Click += new System.EventHandler(this.btnAddRecipe_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Sitka Subheading", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(95)))), ((int)(((byte)(1)))));
+            this.label1.Location = new System.Drawing.Point(3, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 19);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Liste de courses";
+            // 
+            // recipeBindDataBindingSource
+            // 
+            this.recipeBindDataBindingSource.DataSource = typeof(Foody.Models.RecipeBindData);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.contentsGridView);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.footerPanel);
+            this.splitContainer1.Size = new System.Drawing.Size(823, 249);
+            this.splitContainer1.SplitterDistance = 216;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // GeneratePanel
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.Name = "GeneratePanel";
+            this.Size = new System.Drawing.Size(823, 478);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MealsDataGridView)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.footerPanel.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.contentsGridView)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.TagsPanel.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recipeBindDataBindingSource)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.ResumeLayout(false);
+
     }
   }
 }
