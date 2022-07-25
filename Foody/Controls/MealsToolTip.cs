@@ -114,7 +114,7 @@ namespace Foody.Controls
       this.AutoScaleMode = AutoScaleMode.Font;
       this.BackColor = Color.FromArgb(37, 40, 42);
       this.Controls.Add((Control) this.Labels);
-      this.Name = nameof (MealsToolTip);
+      this.Name = "MealsToolTip";
       this.Size = new Size(169, 39);
       this.ResumeLayout(false);
       this.PerformLayout();

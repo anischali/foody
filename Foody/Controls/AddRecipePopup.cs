@@ -111,7 +111,7 @@ namespace Foody.Controls
       this.Controls.Add((Control) this.Data);
       this.ForeColor = SystemColors.ActiveCaption;
       this.ImeMode = ImeMode.NoControl;
-      this.Name = nameof (AddRecipePopup);
+      this.Name ="AddRecipePopup";
       this.Size = new Size(652, 151);
       this.ResumeLayout(false);
     }

@@ -730,7 +730,7 @@ namespace Foody.Controls
       this.Controls.Add((Control) this.panel4);
       this.Controls.Add((Control) this.panel1);
       this.ForeColor = Color.FromArgb(37, 37, 38);
-      this.Name = nameof (GeneratePanel);
+      this.Name = "GeneratePanel";
       this.Size = new Size(823, 478);
       this.panel1.ResumeLayout(false);
       ((ISupportInitialize) this.MealsDataGridView).EndInit();

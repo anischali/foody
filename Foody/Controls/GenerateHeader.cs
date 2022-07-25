@@ -77,7 +77,7 @@ namespace Foody.Controls
       this.Controls.Add((Control) this.lblMealNumber);
       this.Controls.Add((Control) this.tbGenerateMealsNumber);
       this.Controls.Add((Control) this.btnGenerateNumber);
-      this.Name = nameof (GenerateHeader);
+      this.Name = "GenerateHeader";
       this.Size = new Size(669, 51);
       this.ResumeLayout(false);
       this.PerformLayout();

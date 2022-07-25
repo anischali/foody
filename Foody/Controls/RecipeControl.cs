@@ -788,7 +788,7 @@ namespace Foody.Controls
       this.Controls.Add((Control) this.RecipeMainPanelControl);
       this.Controls.Add((Control) this.header);
       this.Margin = new Padding(22, 24, 22, 24);
-      this.Name = nameof (RecipeControl);
+      this.Name = "RecipeControl";
       this.Size = new Size(760, 426);
       ((ISupportInitialize) this.dgvContents).EndInit();
       this.header.ResumeLayout(false);

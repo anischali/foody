@@ -420,7 +420,7 @@ namespace Foody
       this.FormBorderStyle = FormBorderStyle.FixedSingle;
       this.Icon = (Icon) componentResourceManager.GetObject("$this.Icon");
       this.Margin = new Padding(2, 2, 2, 2);
-      this.Name = nameof (MainWindow);
+      this.Name = "MainWindow";
       this.StartPosition = FormStartPosition.CenterScreen;
       this.Text = "Générateur de course";
       this.pnlLargeSideMenu.ResumeLayout(false);

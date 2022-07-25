@@ -70,7 +70,7 @@ namespace Foody.Controls
       this.AutoScaleMode = AutoScaleMode.Font;
       this.BackColor = Color.FromArgb(37, 40, 42);
       this.Controls.Add((Control) this.pbQrCode);
-      this.Name = nameof (QrCodeRenderer);
+      this.Name = "QrCodeRenderer";
       this.Size = new Size(645, 440);
       ((ISupportInitialize) this.pbQrCode).EndInit();
       this.ResumeLayout(false);

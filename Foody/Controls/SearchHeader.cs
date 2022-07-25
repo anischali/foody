@@ -469,7 +469,7 @@ namespace Foody.Controls
       this.Controls.Add((Control) this.pnlAdvancedSearchTags);
       this.Controls.Add((Control) this.SearchHeaderMainPanel);
       this.Margin = new Padding(2);
-      this.Name = nameof (SearchHeader);
+      this.Name = "SearchHeader";
       this.Size = new Size(669, 284);
       this.pnlTextBoxAndSearch.ResumeLayout(false);
       this.searchBarPanel.ResumeLayout(false);

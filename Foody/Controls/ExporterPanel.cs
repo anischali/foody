@@ -139,7 +139,7 @@ namespace Foody.Controls
       this.Controls.Add((Control) this.btnTxtExport);
       this.Controls.Add((Control) this.btnQRExport);
       this.Margin = new Padding(2, 2, 2, 2);
-      this.Name = nameof (ExporterPanel);
+      this.Name = "ExporterPanel";
       this.Size = new Size(83, 31);
       this.ResumeLayout(false);
     }

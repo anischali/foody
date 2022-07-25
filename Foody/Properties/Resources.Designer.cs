@@ -44,16 +44,16 @@ namespace Foody.Properties
       set => Foody.Properties.Resources.resourceCulture = value;
     }
 
-    internal static Bitmap defaultCellBG => (Bitmap) Foody.Properties.Resources.ResourceManager.GetObject(nameof (defaultCellBG), Foody.Properties.Resources.resourceCulture);
+    internal static Bitmap defaultCellBG => (Bitmap) Foody.Properties.Resources.ResourceManager.GetObject("defaultCellBG", Foody.Properties.Resources.resourceCulture);
 
-    internal static string NotSelectedImage => Foody.Properties.Resources.ResourceManager.GetString(nameof (NotSelectedImage), Foody.Properties.Resources.resourceCulture);
+    internal static string NotSelectedImage => Foody.Properties.Resources.ResourceManager.GetString("NotSelectedImage", Foody.Properties.Resources.resourceCulture);
 
-    internal static Bitmap partialSelect => (Bitmap) Foody.Properties.Resources.ResourceManager.GetObject(nameof (partialSelect), Foody.Properties.Resources.resourceCulture);
+    internal static Bitmap partialSelect => (Bitmap) Foody.Properties.Resources.ResourceManager.GetObject("partialSelect", Foody.Properties.Resources.resourceCulture);
 
-    internal static Bitmap selected => (Bitmap) Foody.Properties.Resources.ResourceManager.GetObject(nameof (selected), Foody.Properties.Resources.resourceCulture);
+    internal static Bitmap selected => (Bitmap) Foody.Properties.Resources.ResourceManager.GetObject("selected", Foody.Properties.Resources.resourceCulture);
 
-    internal static string SelectedImage => Foody.Properties.Resources.ResourceManager.GetString(nameof (SelectedImage), Foody.Properties.Resources.resourceCulture);
+    internal static string SelectedImage => Foody.Properties.Resources.ResourceManager.GetString("SelectedImage", Foody.Properties.Resources.resourceCulture);
 
-    internal static Bitmap unselected => (Bitmap) Foody.Properties.Resources.ResourceManager.GetObject(nameof (unselected), Foody.Properties.Resources.resourceCulture);
+    internal static Bitmap unselected => (Bitmap) Foody.Properties.Resources.ResourceManager.GetObject("unselected", Foody.Properties.Resources.resourceCulture);
   }
 }

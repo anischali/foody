@@ -186,7 +186,7 @@ namespace Foody.Controls
       this.AutoScaleMode = AutoScaleMode.Font;
       this.BackColor = Color.FromArgb(37, 40, 42);
       this.Controls.Add((Control) this.tagsSplitter);
-      this.Name = nameof (TagsLabelsControl);
+      this.Name = "TagsLabelsControl";
       this.Size = new Size(660, 119);
       this.tagsSplitter.Panel1.ResumeLayout(false);
       this.tagsSplitter.Panel2.ResumeLayout(false);

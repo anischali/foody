@@ -424,7 +424,7 @@ namespace Foody.Controls
       this.BackColor = Color.FromArgb(37, 40, 42);
       this.Controls.Add((Control) this.MainListPanel);
       this.Margin = new Padding(2);
-      this.Name = nameof (RecipeList);
+      this.Name = "RecipeList";
       this.Size = new Size(763, 429);
       this.panel1.ResumeLayout(false);
       this.MainListPanel.ResumeLayout(false);
