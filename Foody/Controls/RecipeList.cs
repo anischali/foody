@@ -124,8 +124,7 @@ namespace Foody.Controls
                    v.Rows[index2].Cells[0].Value = (object)index1.ToString();
                    v.Rows[index2].Cells[1].Value = (object)false;
                    v.Rows[index2].Cells[2].Value = (object)l[index1].title;
-                   v.Rows[index2].Cells[3].Value = (object)"\uD83D\uDCDD";
-                   v.Rows[index2].Cells[4].Value = (object)"\uD83D\uDDD1";
+                   v.Rows[index2].Cells[3].Value = (object)"\uD83D\uDDD1";
                }
            });
             this.RecipesDataGridView.Rows.Clear();
@@ -143,8 +142,7 @@ namespace Foody.Controls
                    v.Rows[index2].Cells[0].Value = (object)index3.ToString();
                    v.Rows[index2].Cells[1].Value = (object)false;
                    v.Rows[index2].Cells[2].Value = (object)l[index3].title;
-                   v.Rows[index2].Cells[3].Value = (object)"\uD83D\uDCDD";
-                   v.Rows[index2].Cells[4].Value = (object)"\uD83D\uDDD1";
+                   v.Rows[index2].Cells[3].Value = (object)"\uD83D\uDDD1";
                }
            });
             this.RecipesDataGridView.Rows.Clear();
@@ -262,7 +260,6 @@ namespace Foody.Controls
             this.components = (IContainer)new Container();
             DataGridViewCellStyle gridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle gridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle gridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle gridViewCellStyle4 = new DataGridViewCellStyle();
             this.panel1 = new Panel();
             this.MainListPanel = new Panel();
@@ -273,7 +270,6 @@ namespace Foody.Controls
             this.RealIndex = new DataGridViewTextBoxColumn();
             this.Check = new DataGridViewCheckBoxColumn();
             this.Nom = new DataGridViewTextBoxColumn();
-            this.Edit = new DataGridViewButtonColumn();
             this.Delete = new DataGridViewButtonColumn();
             this.recipeBindDataBindingSource = new BindingSource(this.components);
             this.searchHeader1 = new SearchHeader();
@@ -363,15 +359,7 @@ namespace Foody.Controls
             this.RecipesDataGridView.ColumnHeadersDefaultCellStyle = gridViewCellStyle2;
             this.RecipesDataGridView.ColumnHeadersHeight = 40;
             this.RecipesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.RecipesDataGridView.Columns.AddRange((DataGridViewColumn)this.RealIndex, (DataGridViewColumn)this.Check, (DataGridViewColumn)this.Nom, (DataGridViewColumn)this.Edit, (DataGridViewColumn)this.Delete);
-            gridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            gridViewCellStyle3.BackColor = Color.FromArgb(37, 40, 42);
-            gridViewCellStyle3.Font = new Font("Arial", 10.2f, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
-            gridViewCellStyle3.ForeColor = Color.White;
-            gridViewCellStyle3.SelectionBackColor = Color.FromArgb(37, 40, 42);
-            gridViewCellStyle3.SelectionForeColor = Color.White;
-            gridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            this.RecipesDataGridView.DefaultCellStyle = gridViewCellStyle3;
+            this.RecipesDataGridView.Columns.AddRange((DataGridViewColumn)this.RealIndex, (DataGridViewColumn)this.Check, (DataGridViewColumn)this.Nom, (DataGridViewColumn)this.Delete);
             this.RecipesDataGridView.Dock = DockStyle.Fill;
             this.RecipesDataGridView.EnableHeadersVisualStyles = false;
             this.RecipesDataGridView.GridColor = Color.White;
@@ -408,12 +396,6 @@ namespace Foody.Controls
             this.Nom.Name = "Nom";
             this.Nom.ReadOnly = true;
             this.Nom.SortMode = DataGridViewColumnSortMode.NotSortable;
-            this.Edit.FlatStyle = FlatStyle.Flat;
-            this.Edit.HeaderText = "Modifier";
-            this.Edit.MinimumWidth = 6;
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Width = 48;
             this.Delete.FlatStyle = FlatStyle.Flat;
             this.Delete.HeaderText = "Supprimer";
             this.Delete.MinimumWidth = 6;
