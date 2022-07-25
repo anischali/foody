@@ -723,9 +723,10 @@ namespace Foody.Controls
       this.splitContainer3.Size = new Size(701, 128);
       this.splitContainer3.SplitterDistance = 63;
       this.splitContainer3.TabIndex = 1;
-      this.rtbDescription.BackColor = Color.FromArgb(37, 40, 42);
+      this.rtbDescription.BackColor = Color.FromArgb(255, 255, 255);
       this.rtbDescription.Dock = DockStyle.Fill;
-      this.rtbDescription.ForeColor = SystemColors.Menu;
+      this.rtbDescription.ForeColor = Color.Black;
+      this.rtbDescription.Font = new Font("Times New Roman", 12.0f);
       this.rtbDescription.Location = new Point(0, 0);
       this.rtbDescription.Name = "rtbDescription";
       this.rtbDescription.ReadOnly = true;
