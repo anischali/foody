@@ -77,6 +77,7 @@ namespace Foody.Controls
         this.active = true;
         if (this.OnExpandSearchBar == null)
           return;
+        this.tbSearchText.Select();
         this.OnExpandSearchBar((object) null, (EventArgs) null);
       });
       this.button1.Click += (EventHandler) ((s, e) =>
