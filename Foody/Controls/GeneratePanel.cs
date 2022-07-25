@@ -17,354 +17,371 @@ using System.Windows.Forms;
 
 namespace Foody.Controls
 {
-  public class GeneratePanel : UserControl
-  {
-    private readonly MealGenerator mealGenerator = new MealGenerator();
-    private int mealsSelectedRow = 0;
-    private int mealsNumber = 0;
-    private ExporterPanel exporterPanel = new ExporterPanel();
-    private SearchEngine searcher = new SearchEngine();
-    private TagConverter converter = new TagConverter();
-    private UnitConverter unitConverter = new UnitConverter();
-    private IContainer components = (IContainer) null;
-    private Panel panel1;
-    private Panel panel3;
-    private Panel panel4;
-    private Button btnAddContents;
-    private Label label1;
-    private Panel footerPanel;
-    private Button btnGenerate;
-    private Button btnValidate;
-    private Panel panel6;
-    private BindingSource recipeBindDataBindingSource;
-    private Panel panel7;
-    private Panel panel2;
-    private Panel TagsPanel;
-    private FlowLayoutPanel SelectedTags;
-    private DataGridView MealsDataGridView;
-    private DataGridView contentsGridView;
-    private Panel panel8;
-    private FlowLayoutPanel NotSelectedTags;
-    private Button btnAddRecipe;
-    private DataGridViewTextBoxColumn Num;
-    private DataGridViewTextBoxColumn Nom;
-    private DataGridViewTextBoxColumn NbPersonne;
-    private DataGridViewButtonColumn Tags;
-    private DataGridViewButtonColumn Change;
-    private DataGridViewButtonColumn Remove;
-    private DataGridViewTextBoxColumn NumContent;
-    private DataGridViewTextBoxColumn ContentName;
-    private DataGridViewTextBoxColumn ContentQuantity;
-    private DataGridViewTextBoxColumn EnStock;
-    private DataGridViewTextBoxColumn Total;
-    private DataGridViewTextBoxColumn Unit;
-    private DataGridViewButtonColumn moins;
+    public class GeneratePanel : UserControl
+    {
+        private readonly MealGenerator mealGenerator = new MealGenerator();
+        private int mealsSelectedRow = 0;
+        private int mealsNumber = 0;
+        private ExporterPanel exporterPanel = new ExporterPanel();
+        private SearchEngine searcher = new SearchEngine();
+        private TagConverter converter = new TagConverter();
+        private UnitConverter unitConverter = new UnitConverter();
+        private IContainer components = (IContainer)null;
+        private Panel panel1;
+        private Panel panel3;
+        private Panel panel4;
+        private Button btnAddContents;
+        private Label label1;
+        private Panel footerPanel;
+        private Button btnGenerate;
+        private Button btnValidate;
+        private Panel panel6;
+        private BindingSource recipeBindDataBindingSource;
+        private Panel panel7;
+        private Panel panel2;
+        private Panel TagsPanel;
+        private FlowLayoutPanel SelectedTags;
+        private DataGridView MealsDataGridView;
+        private DataGridView contentsGridView;
+        private Panel panel8;
+        private FlowLayoutPanel NotSelectedTags;
+        private Button btnAddRecipe;
+        private DataGridViewTextBoxColumn Num;
+        private DataGridViewTextBoxColumn Nom;
+        private DataGridViewTextBoxColumn NbPersonne;
+        private DataGridViewButtonColumn Tags;
+        private DataGridViewButtonColumn Change;
+        private DataGridViewButtonColumn Remove;
+        private DataGridViewTextBoxColumn NumContent;
+        private DataGridViewTextBoxColumn ContentName;
+        private DataGridViewTextBoxColumn ContentQuantity;
+        private DataGridViewTextBoxColumn EnStock;
+        private DataGridViewTextBoxColumn Total;
+        private DataGridViewTextBoxColumn Unit;
+        private DataGridViewButtonColumn moins;
         private SplitContainer splitContainer1;
         private DataGridViewButtonColumn Plus;
 
-    public GeneratePanel()
-    {
-      this.InitializeComponent();
-      this.InitEvents();
-      this.ManualInit();
-    }
-
-    private void InitEvents()
-    {
-      this.MealsDataGridView.CellClick += new DataGridViewCellEventHandler(this.MealsDataGridViewCell_Click);
-      this.contentsGridView.CellClick += new DataGridViewCellEventHandler(this.ContentsDataGridViewCell_Click);
-      this.btnValidate.Enabled = true;
-      this.btnValidate.Click += (EventHandler) ((s, e) =>
-      {
-        this.mealGenerator.Generate();
-        this.UpdateAllDataGrids();
-        this.btnValidate.Enabled = false;
-      });
-      this.MealsDataGridView.CellEndEdit += (DataGridViewCellEventHandler) ((s, e) =>
-      {
-        if (e.ColumnIndex != 2 || e.RowIndex < 0 || e.RowIndex >= this.mealGenerator.Length)
-          return;
-        this.mealGenerator.SetQuantity(e.RowIndex, Tools.ParseDouble(this.MealsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()));
-        this.mealGenerator.SetNumberOfMealsForContentsByRecipe(e.RowIndex);
-        this.UpdateContentsGrid();
-      });
-      this.contentsGridView.CellEndEdit += (DataGridViewCellEventHandler) ((s, e) =>
-      {
-        if (e.ColumnIndex != 3)
-          return;
-        RecipeContent[] contents = this.mealGenerator.Contents;
-        if (e.RowIndex >= 0 && e.RowIndex < contents.Length && this.contentsGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+        public GeneratePanel()
         {
-          double d = Tools.ParseDouble(this.contentsGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
-          double quantity = double.IsNaN(d) ? this.mealGenerator.GetQuantityInStock(contents[e.RowIndex].uid) : d;
-          this.mealGenerator.SetQuantityInStock(contents[e.RowIndex].uid, quantity);
-          this.UpdateContentsGrid();
+            this.InitializeComponent();
+            this.InitEvents();
+            this.ManualInit();
         }
-      });
-      this.btnGenerate.Click += (EventHandler) ((s, e) =>
-      {
-        if (!this.footerPanel.Controls.Contains((Control) this.exporterPanel))
+
+        private void InitEvents()
         {
-          this.exporterPanel = new ExporterPanel();
-          this.footerPanel.Controls.Add((Control) this.exporterPanel);
-          this.exporterPanel.Dock = DockStyle.Left;
+            this.MealsDataGridView.CellClick += new DataGridViewCellEventHandler(this.MealsDataGridViewCell_Click);
+            this.contentsGridView.CellClick += new DataGridViewCellEventHandler(this.ContentsDataGridViewCell_Click);
+            this.MealsDataGridView.CellDoubleClick += new DataGridViewCellEventHandler(this.MealsDataGridViewCell_DblClick);
+            this.btnValidate.Enabled = true;
+            this.btnValidate.Click += (EventHandler)((s, e) =>
+           {
+               this.mealGenerator.Generate();
+               this.UpdateAllDataGrids();
+               this.btnValidate.Enabled = false;
+           });
+            this.MealsDataGridView.CellEndEdit += (DataGridViewCellEventHandler)((s, e) =>
+           {
+               if (e.ColumnIndex != 2 || e.RowIndex < 0 || e.RowIndex >= this.mealGenerator.Length)
+                   return;
+               this.mealGenerator.SetQuantity(e.RowIndex, Tools.ParseDouble(this.MealsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()));
+               this.mealGenerator.SetNumberOfMealsForContentsByRecipe(e.RowIndex);
+               this.UpdateContentsGrid();
+           });
+            this.contentsGridView.CellEndEdit += (DataGridViewCellEventHandler)((s, e) =>
+           {
+               if (e.ColumnIndex != 3)
+                   return;
+               RecipeContent[] contents = this.mealGenerator.Contents;
+               if (e.RowIndex >= 0 && e.RowIndex < contents.Length && this.contentsGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+               {
+                   double d = Tools.ParseDouble(this.contentsGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+                   double quantity = double.IsNaN(d) ? this.mealGenerator.GetQuantityInStock(contents[e.RowIndex].uid) : d;
+                   this.mealGenerator.SetQuantityInStock(contents[e.RowIndex].uid, quantity);
+                   this.UpdateContentsGrid();
+               }
+           });
+            this.btnGenerate.Click += (EventHandler)((s, e) =>
+           {
+               if (!this.footerPanel.Controls.Contains((Control)this.exporterPanel))
+               {
+                   this.exporterPanel = new ExporterPanel();
+                   this.footerPanel.Controls.Add((Control)this.exporterPanel);
+                   this.exporterPanel.Dock = DockStyle.Left;
+               }
+               this.exporterPanel.Generator = this.mealGenerator;
+               this.exporterPanel.Visible = true;
+           });
+            this.searcher.AsyncRefresh += (EventHandler)((s, e) =>
+           {
+               if (this.MealsDataGridView.InvokeRequired)
+                   this.MealsDataGridView.Invoke(new Action(() => this.ChangeMealsAfterTagEdit()));
+               else
+                   this.ChangeMealsAfterTagEdit();
+           });
+
         }
-        this.exporterPanel.Generator = this.mealGenerator;
-        this.exporterPanel.Visible = true;
-      });
-      this.searcher.AsyncRefresh += (EventHandler) ((s, e) =>
-      {
-        if (this.MealsDataGridView.InvokeRequired)
-          this.MealsDataGridView.Invoke(new Action(() => this.ChangeMealsAfterTagEdit()));
-        else
-          this.ChangeMealsAfterTagEdit();
-      });
-    }
 
-    private void ChangeMealsAfterTagEdit()
-    {
-      this.mealGenerator.ChangeGeneratedRecipesFor(this.mealsSelectedRow, this.searcher.SearchResult);
-      this.UpdateAllDataGrids();
-    }
-
-    private void ManualInit()
-    {
-      this.contentsGridView.MultiSelect = false;
-      this.MealsDataGridView.MultiSelect = false;
-      this.DoubleBuffered = true;
-    }
-
-    private string GetCorrespondingToolTip(int rowIndex)
-    {
-      Content[] contentsForThisRecipe = this.mealGenerator.GetContentsForThisRecipe(rowIndex);
-      string correspondingToolTip = "";
-      if (contentsForThisRecipe != null)
-      {
-        foreach (string str in ((IEnumerable<Content>) contentsForThisRecipe).Select<Content, string>((Func<Content, string>) (x => x.Name + Environment.NewLine)).ToArray<string>())
-          correspondingToolTip += str;
-      }
-      return correspondingToolTip;
-    }
-
-    private string GetQuantitiesByRecipe(RecipeContent content)
-    {
-      for (int idx = 0; idx < this.mealsNumber; ++idx)
-      {
-        string recipeUid = this.mealGenerator.GetRecipeUid(idx);
-        Content[] contentsForThisRecipe = this.mealGenerator.GetContentsForThisRecipe(idx);
-        if (contentsForThisRecipe != null)
+        private void ChangeMealsAfterTagEdit()
         {
-          foreach (Content content1 in contentsForThisRecipe)
-          {
-            if (content1.uid == content.uid)
+            this.mealGenerator.ChangeGeneratedRecipesFor(this.mealsSelectedRow, this.searcher.SearchResult);
+            this.UpdateAllDataGrids();
+        }
+
+        private void ManualInit()
+        {
+            this.contentsGridView.MultiSelect = false;
+            this.MealsDataGridView.MultiSelect = false;
+            this.DoubleBuffered = true;
+        }
+
+        private string GetCorrespondingToolTip(int rowIndex)
+        {
+            Content[] contentsForThisRecipe = this.mealGenerator.GetContentsForThisRecipe(rowIndex);
+            string correspondingToolTip = "";
+            if (contentsForThisRecipe != null)
             {
-              double quantity = this.mealGenerator.GetQuantity(idx);
-              double Quantity = this.mealGenerator.GetQuantityInThisRecipe(idx, content1.uid) * (quantity > 0.0 ? quantity : 1.0);
-              this.mealGenerator.SetContentsByMeal(content1.uid, (idx + 1).ToString(), recipeUid, Quantity);
+                foreach (string str in ((IEnumerable<Content>)contentsForThisRecipe).Select<Content, string>((Func<Content, string>)(x => x.Name + Environment.NewLine)).ToArray<string>())
+                    correspondingToolTip += str;
             }
-          }
+            return correspondingToolTip;
         }
-      }
-      return this.mealGenerator.GetContentsByMeal(content.uid);
-    }
 
-    private void UpdateContentsGrid()
-    {
-      if (this.contentsGridView.InvokeRequired)
-      {
-        this.contentsGridView.Invoke((Delegate) new MethodInvoker(this.UpdateContentsGrid));
-      }
-      else
-      {
-        this.contentsGridView.SuspendLayout();
-        RecipeContent[] contents = this.mealGenerator.Contents;
-        bool flag = this.contentsGridView.Rows.Count != contents.Length;
-        if (flag)
-          this.contentsGridView.Rows.Clear();
-        for (int index1 = 0; index1 < contents.Length; ++index1)
+        private string GetQuantitiesByRecipe(RecipeContent content)
         {
-          int index2 = flag ? this.contentsGridView.Rows.Add() : index1;
-          this.contentsGridView.Rows[index2].Cells[0].Value = (object) (index1 + 1);
-          this.contentsGridView.Rows[index2].Cells[1].Value = (object) Tools.FindContentByUid(contents[index1].uid).Name;
-          this.contentsGridView.Rows[index2].Cells[2].Value = (object) this.GetQuantitiesByRecipe(contents[index1]);
-          double quantityInStock = this.mealGenerator.GetQuantityInStock(contents[index1].uid);
-          this.contentsGridView.Rows[index2].Cells[3].Value = (object) quantityInStock;
-          this.contentsGridView.Rows[index2].Cells[4].Value = (object) (contents[index1].Quantity - quantityInStock);
-          this.contentsGridView.Rows[index2].Cells[5].Value = (object) this.unitConverter.GetString(contents[index1].QuantityUnit);
-          this.contentsGridView.Rows[index2].Cells[6].Value = (object) "➖";
-          this.contentsGridView.Rows[index2].Cells[7].Value = (object) "➕";
+            for (int idx = 0; idx < this.mealsNumber; ++idx)
+            {
+                string recipeUid = this.mealGenerator.GetRecipeUid(idx);
+                Content[] contentsForThisRecipe = this.mealGenerator.GetContentsForThisRecipe(idx);
+                if (contentsForThisRecipe != null)
+                {
+                    foreach (Content content1 in contentsForThisRecipe)
+                    {
+                        if (content1.uid == content.uid)
+                        {
+                            double quantity = this.mealGenerator.GetQuantity(idx);
+                            double Quantity = this.mealGenerator.GetQuantityInThisRecipe(idx, content1.uid) * (quantity > 0.0 ? quantity : 1.0);
+                            this.mealGenerator.SetContentsByMeal(content1.uid, (idx + 1).ToString(), recipeUid, Quantity);
+                        }
+                    }
+                }
+            }
+            return this.mealGenerator.GetContentsByMeal(content.uid);
         }
-        this.contentsGridView.ResumeLayout();
-      }
-    }
 
-    private void UpdateMealsGrid()
-    {
-      this.MealsDataGridView.Rows.Clear();
-      for (int index1 = 0; index1 < this.mealsNumber; ++index1)
-      {
-        int index2 = this.MealsDataGridView.Rows.Add();
-        this.MealsDataGridView.Rows[index2].Cells[0].Value = (object) (index1 + 1);
-        this.MealsDataGridView.Rows[index2].Cells[1].Value = (object) this.mealGenerator.GetName(index1);
-        this.MealsDataGridView.Rows[index2].Cells[2].Value = (object) this.mealGenerator.GetQuantity(index1);
-        this.MealsDataGridView.Rows[index2].Cells[3].Value = (object) "➕";
-        this.MealsDataGridView.Rows[index2].Cells[4].Value = (object) "♻";
-        this.MealsDataGridView.Rows[index2].Cells[5].Value = (object) "\uD83D\uDDD1";
-        this.MealsDataGridView.Rows[index2].Cells[1].ToolTipText = this.GetCorrespondingToolTip(index1);
-      }
-    }
-
-    private void UpdateAllDataGrids()
-    {
-      this.UpdateMealsGrid();
-      this.UpdateContentsGrid();
-    }
-
-    public void GenerateMealsList(int n)
-    {
-      this.MealsDataGridView.Rows.Clear();
-      this.contentsGridView.Rows.Clear();
-      this.btnValidate.Enabled = true;
-      this.mealGenerator.MealsGeneratorReinit(true);
-      this.mealsNumber = n;
-      for (int idx = 0; idx < n; ++idx)
-      {
-        this.mealGenerator.Add(new MealData());
-        int index = this.MealsDataGridView.Rows.Add();
-        this.MealsDataGridView.Rows[index].Cells[0].Value = (object) (idx + 1);
-        this.MealsDataGridView.Rows[index].Cells[1].Value = (object) "";
-        this.MealsDataGridView.Rows[index].Cells[2].Value = (object) this.mealGenerator.GetQuantity(idx);
-        this.MealsDataGridView.Rows[index].Cells[3].Value = (object) "➕";
-        this.MealsDataGridView.Rows[index].Cells[4].Value = (object) "♻";
-        this.MealsDataGridView.Rows[index].Cells[5].Value = (object) "\uD83D\uDDD1";
-      }
-    }
-
-    private void UpdateQuantities()
-    {
-      for (int index = 0; index < this.mealGenerator.Length; ++index)
-        this.MealsDataGridView.Rows[index].Cells[1].Value = (object) this.mealGenerator.GetQuantity(index).ToString();
-    }
-
-    private void ShowTagsCompenents(bool visible) => this.SelectedTags.Visible = this.NotSelectedTags.Visible = visible;
-
-    private void SetAllQuantities()
-    {
-      for (int index = 0; index < this.mealGenerator.Length; ++index)
-      {
-        string number = index < this.MealsDataGridView.Rows.Count ? this.MealsDataGridView.Rows[index].Cells[1].Value.ToString() : "0";
-        if (string.IsNullOrEmpty(number))
-          return;
-        this.mealGenerator.SetQuantity(index, Tools.ParseDouble(number));
-      }
-      this.UpdateQuantities();
-    }
-
-    private void TagLabelClick(object s, EventArgs e)
-    {
-      Button button = (Button) s;
-      if ((bool) button.Tag)
-        this.mealGenerator.RemoveTagFrom(this.mealsSelectedRow, this.converter.GetFromString(button.Text));
-      else
-        this.mealGenerator.AddTagTo(this.mealsSelectedRow, this.converter.GetFromString(button.Text));
-      if (!this.btnValidate.Enabled)
-        this.searcher.Search(string.Empty, this.mealGenerator.GetTags(this.mealsSelectedRow), false, (int[]) null, false);
-      this.PopulateTagsPanels();
-    }
-
-    private void PopulateTagsPanels()
-    {
-      TagConverter converter = new TagConverter();
-      this.SelectedTags.Controls.Clear();
-      this.NotSelectedTags.Controls.Clear();
-      Tag[] tags1 = this.mealGenerator.GetTags(this.mealsSelectedRow);
-      if (tags1 != null && tags1.Length != 0)
-      {
-        for (int index = 0; index < tags1.Length; ++index)
+        private void UpdateContentsGrid()
         {
-          Button button = Components.TagLabel(converter.GetString(tags1[index]), true);
-          button.Click += new EventHandler(this.TagLabelClick);
-          this.SelectedTags.Controls.Add((Control) button);
+            if (this.contentsGridView.InvokeRequired)
+            {
+                this.contentsGridView.Invoke((Delegate)new MethodInvoker(this.UpdateContentsGrid));
+            }
+            else
+            {
+                this.contentsGridView.SuspendLayout();
+                RecipeContent[] contents = this.mealGenerator.Contents;
+                bool flag = this.contentsGridView.Rows.Count != contents.Length;
+                if (flag)
+                    this.contentsGridView.Rows.Clear();
+                for (int index1 = 0; index1 < contents.Length; ++index1)
+                {
+                    int index2 = flag ? this.contentsGridView.Rows.Add() : index1;
+                    this.contentsGridView.Rows[index2].Cells[0].Value = (object)(index1 + 1);
+                    this.contentsGridView.Rows[index2].Cells[1].Value = (object)Tools.FindContentByUid(contents[index1].uid).Name;
+                    this.contentsGridView.Rows[index2].Cells[2].Value = (object)this.GetQuantitiesByRecipe(contents[index1]);
+                    double quantityInStock = this.mealGenerator.GetQuantityInStock(contents[index1].uid);
+                    this.contentsGridView.Rows[index2].Cells[3].Value = (object)quantityInStock;
+                    this.contentsGridView.Rows[index2].Cells[4].Value = (object)(contents[index1].Quantity - quantityInStock);
+                    this.contentsGridView.Rows[index2].Cells[5].Value = (object)this.unitConverter.GetString(contents[index1].QuantityUnit);
+                    this.contentsGridView.Rows[index2].Cells[6].Value = (object)"➖";
+                    this.contentsGridView.Rows[index2].Cells[7].Value = (object)"➕";
+                }
+                this.contentsGridView.ResumeLayout();
+            }
         }
-      }
-      string[] tags = Consts.tags;
-      for (int i = 0; i < tags.Length; ++i)
-      {
-        if (!((IEnumerable<Tag>) tags1).Any<Tag>((Func<Tag, bool>) (t => converter.GetString(t).Equals(tags[i]))))
+
+        private void UpdateMealsGrid()
         {
-          Button button = Components.TagLabel(tags[i], false);
-          button.Click += new EventHandler(this.TagLabelClick);
-          this.NotSelectedTags.Controls.Add((Control) button);
+            this.MealsDataGridView.Rows.Clear();
+            for (int index1 = 0; index1 < this.mealsNumber; ++index1)
+            {
+                int index2 = this.MealsDataGridView.Rows.Add();
+                this.MealsDataGridView.Rows[index2].Cells[0].Value = (object)(index1 + 1);
+                this.MealsDataGridView.Rows[index2].Cells[1].Value = (object)this.mealGenerator.GetName(index1);
+                this.MealsDataGridView.Rows[index2].Cells[2].Value = (object)this.mealGenerator.GetQuantity(index1);
+                this.MealsDataGridView.Rows[index2].Cells[3].Value = (object)"➕";
+                this.MealsDataGridView.Rows[index2].Cells[4].Value = (object)"♻";
+                this.MealsDataGridView.Rows[index2].Cells[5].Value = (object)"\uD83D\uDDD1";
+                this.MealsDataGridView.Rows[index2].Cells[1].ToolTipText = this.GetCorrespondingToolTip(index1);
+            }
         }
-      }
-    }
 
-    private void ContentsDataGridViewCell_Click(object sender, DataGridViewCellEventArgs e)
-    {
-      switch (e.ColumnIndex)
-      {
-        case 6:
-          RecipeContent[] contents1 = this.mealGenerator.Contents;
-          if (e.RowIndex < 0 || e.ColumnIndex >= contents1.Length)
-            break;
-          double quantity1 = this.mealGenerator.GetQuantityInStock(contents1[e.RowIndex].uid) + 1.0;
-          this.mealGenerator.SetQuantityInStock(contents1[e.RowIndex].uid, quantity1);
-          this.UpdateContentsGrid();
-          break;
-        case 7:
-          RecipeContent[] contents2 = this.mealGenerator.Contents;
-          if (e.RowIndex < 0 || e.ColumnIndex >= contents2.Length)
-            break;
-          double quantity2 = this.mealGenerator.GetQuantityInStock(contents2[e.RowIndex].uid) - 1.0;
-          this.mealGenerator.SetQuantityInStock(contents2[e.RowIndex].uid, quantity2);
-          this.UpdateContentsGrid();
-          break;
-      }
-    }
+        private void UpdateAllDataGrids()
+        {
+            this.UpdateMealsGrid();
+            this.UpdateContentsGrid();
+        }
 
-    private void MealsDataGridViewCell_Click(object sender, DataGridViewCellEventArgs e)
-    {
-      switch (e.ColumnIndex)
-      {
-        case 3:
-          this.mealsSelectedRow = e.RowIndex;
-          if (this.mealsSelectedRow < 0 || this.mealsSelectedRow >= this.MealsDataGridView.Rows.Count)
-            break;
-          this.ShowTagsCompenents(true);
-          this.PopulateTagsPanels();
-          break;
-        case 4:
-          this.mealGenerator.SetQuantity(e.RowIndex, 1.0);
-          this.mealGenerator.ChangeMeal(e.RowIndex);
-          this.UpdateAllDataGrids();
-          break;
-        case 5:
-          this.mealGenerator.RemoveAt(e.RowIndex);
-          this.mealsNumber = this.mealGenerator.Length;
-          this.UpdateAllDataGrids();
-          break;
-      }
-    }
+        public void GenerateMealsList(int n)
+        {
+            this.MealsDataGridView.Rows.Clear();
+            this.contentsGridView.Rows.Clear();
+            this.btnValidate.Enabled = true;
+            this.mealGenerator.MealsGeneratorReinit(true);
+            this.mealsNumber = n;
+            for (int idx = 0; idx < n; ++idx)
+            {
+                this.mealGenerator.Add(new MealData());
+                int index = this.MealsDataGridView.Rows.Add();
+                this.MealsDataGridView.Rows[index].Cells[0].Value = (object)(idx + 1);
+                this.MealsDataGridView.Rows[index].Cells[1].Value = (object)"";
+                this.MealsDataGridView.Rows[index].Cells[2].Value = (object)this.mealGenerator.GetQuantity(idx);
+                this.MealsDataGridView.Rows[index].Cells[3].Value = (object)"➕";
+                this.MealsDataGridView.Rows[index].Cells[4].Value = (object)"♻";
+                this.MealsDataGridView.Rows[index].Cells[5].Value = (object)"\uD83D\uDDD1";
+            }
+        }
 
-    private void btnAddRecipe_Click(object sender, EventArgs e) => new AddRecipePopup(Database.AllMenus.Select<Recipe, string>((Func<Recipe, string>) (x => x.title)).ToArray<string>())
-    {
-      action = ((Action<int>) (s =>
-      {
-        ++this.mealsNumber;
-        this.mealGenerator.Add(s);
-        this.UpdateAllDataGrids();
-      }))
-    }.ShowPopup();
+        private void UpdateQuantities()
+        {
+            for (int index = 0; index < this.mealGenerator.Length; ++index)
+                this.MealsDataGridView.Rows[index].Cells[1].Value = (object)this.mealGenerator.GetQuantity(index).ToString();
+        }
 
-    protected override void Dispose(bool disposing)
-    {
-      if (disposing && this.components != null)
-        this.components.Dispose();
-      base.Dispose(disposing);
-    }
+        private void ShowTagsCompenents(bool visible) => this.SelectedTags.Visible = this.NotSelectedTags.Visible = visible;
 
-    private void InitializeComponent()
-    {
+        private void SetAllQuantities()
+        {
+            for (int index = 0; index < this.mealGenerator.Length; ++index)
+            {
+                string number = index < this.MealsDataGridView.Rows.Count ? this.MealsDataGridView.Rows[index].Cells[1].Value.ToString() : "0";
+                if (string.IsNullOrEmpty(number))
+                    return;
+                this.mealGenerator.SetQuantity(index, Tools.ParseDouble(number));
+            }
+            this.UpdateQuantities();
+        }
+
+        private void TagLabelClick(object s, EventArgs e)
+        {
+            Button button = (Button)s;
+            if ((bool)button.Tag)
+                this.mealGenerator.RemoveTagFrom(this.mealsSelectedRow, this.converter.GetFromString(button.Text));
+            else
+                this.mealGenerator.AddTagTo(this.mealsSelectedRow, this.converter.GetFromString(button.Text));
+            if (!this.btnValidate.Enabled)
+                this.searcher.Search(string.Empty, this.mealGenerator.GetTags(this.mealsSelectedRow), false, (int[])null, false);
+            this.PopulateTagsPanels();
+        }
+
+        private void PopulateTagsPanels()
+        {
+            TagConverter converter = new TagConverter();
+            this.SelectedTags.Controls.Clear();
+            this.NotSelectedTags.Controls.Clear();
+            Tag[] tags1 = this.mealGenerator.GetTags(this.mealsSelectedRow);
+            if (tags1 != null && tags1.Length != 0)
+            {
+                for (int index = 0; index < tags1.Length; ++index)
+                {
+                    Button button = Components.TagLabel(converter.GetString(tags1[index]), true);
+                    button.Click += new EventHandler(this.TagLabelClick);
+                    this.SelectedTags.Controls.Add((Control)button);
+                }
+            }
+            string[] tags = Consts.tags;
+            for (int i = 0; i < tags.Length; ++i)
+            {
+                if (!((IEnumerable<Tag>)tags1).Any<Tag>((Func<Tag, bool>)(t => converter.GetString(t).Equals(tags[i]))))
+                {
+                    Button button = Components.TagLabel(tags[i], false);
+                    button.Click += new EventHandler(this.TagLabelClick);
+                    this.NotSelectedTags.Controls.Add((Control)button);
+                }
+            }
+        }
+
+        private void ContentsDataGridViewCell_Click(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                case 6:
+                    RecipeContent[] contents1 = this.mealGenerator.Contents;
+                    if (e.RowIndex < 0 || e.ColumnIndex >= contents1.Length)
+                        break;
+                    double quantity1 = this.mealGenerator.GetQuantityInStock(contents1[e.RowIndex].uid) + 1.0;
+                    this.mealGenerator.SetQuantityInStock(contents1[e.RowIndex].uid, quantity1);
+                    this.UpdateContentsGrid();
+                    break;
+                case 7:
+                    RecipeContent[] contents2 = this.mealGenerator.Contents;
+                    if (e.RowIndex < 0 || e.ColumnIndex >= contents2.Length)
+                        break;
+                    double quantity2 = this.mealGenerator.GetQuantityInStock(contents2[e.RowIndex].uid) - 1.0;
+                    this.mealGenerator.SetQuantityInStock(contents2[e.RowIndex].uid, quantity2);
+                    this.UpdateContentsGrid();
+                    break;
+            }
+        }
+
+        private void MealsDataGridViewCell_Click(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                case 3:
+                    this.mealsSelectedRow = e.RowIndex;
+                    if (this.mealsSelectedRow < 0 || this.mealsSelectedRow >= this.MealsDataGridView.Rows.Count)
+                        break;
+                    this.ShowTagsCompenents(true);
+                    this.PopulateTagsPanels();
+                    break;
+                case 4:
+                    this.mealGenerator.SetQuantity(e.RowIndex, 1.0);
+                    this.mealGenerator.ChangeMeal(e.RowIndex);
+                    this.UpdateAllDataGrids();
+                    break;
+                case 5:
+                    this.mealGenerator.RemoveAt(e.RowIndex);
+                    this.mealsNumber = this.mealGenerator.Length;
+                    this.UpdateAllDataGrids();
+                    break;
+            }
+        }
+
+        private void MealsDataGridViewCell_DblClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= this.MealsDataGridView.Rows.Count)
+                return;
+
+            int idx = this.mealGenerator.GetRecipeIndex(e.RowIndex);
+            Form r = new Form();
+            RecipeControl rc = new RecipeControl(idx);
+            r.Controls.Add(rc);
+            rc.Dock = DockStyle.Fill;
+            rc.GoBack += new Delegates.Back(() => r.Close());
+            r.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width / 2, Screen.PrimaryScreen.WorkingArea.Height);
+            r.Show();
+        }
+
+        private void btnAddRecipe_Click(object sender, EventArgs e) => new AddRecipePopup(Database.AllMenus.Select<Recipe, string>((Func<Recipe, string>)(x => x.title)).ToArray<string>())
+        {
+            action = ((Action<int>)(s =>
+           {
+               ++this.mealsNumber;
+               this.mealGenerator.Add(s);
+               this.UpdateAllDataGrids();
+           }))
+        }.ShowPopup();
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && this.components != null)
+                this.components.Dispose();
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -891,6 +908,6 @@ namespace Foody.Controls
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
+        }
     }
-  }
 }

@@ -244,6 +244,14 @@ namespace Foody.Models
       return this.selectedRecipes.Length <= 0 || index < 0 || index >= Database.AllMenus.Count ? (Content[]) null : (Content[]) Database.AllMenus[index].GetContents().Select<RecipeContent, Content>((Func<RecipeContent, Content>) (x => Tools.FindContentByUid(x.uid))).ToArray<Content>().Clone();
     }
 
+    public int GetRecipeIndex(int idx)
+    {
+        if (idx < 0 || idx >= this.MealsDataFilter.Count)
+            return -1;
+
+        return this.selectedRecipes.Get(idx);
+    }
+
     public double GetQuantityInStock(string uid) => this.Groceries.GetQuantityInStock(uid);
 
     public void SetQuantityInStock(string uid, double quantity) => this.Groceries.SetQuantityInStock(uid, quantity);
