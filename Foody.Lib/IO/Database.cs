@@ -121,7 +121,7 @@ namespace Foody.IO
     {
       foreach (Recipe allMenu in Database.AllMenus)
       {
-        if (recipe.uid == allMenu.uid)
+        if (recipe.uid.Equals(allMenu.uid))
         {
           allMenu.title = recipe.title;
           allMenu.Tags = recipe.Tags;

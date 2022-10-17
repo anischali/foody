@@ -57,6 +57,7 @@ namespace Foody.Models
     public object Clone()
     {
       Recipe recipe = new Recipe();
+      recipe.uid = this.uid;
       recipe.title = (string) this.title.Clone();
       recipe.Contents.AddRange((IEnumerable<RecipeContent>) this.Contents.ToArray());
       recipe.Tags.AddRange((IEnumerable<Tag>) this.Tags.ToArray());

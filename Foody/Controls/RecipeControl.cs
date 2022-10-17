@@ -22,7 +22,7 @@ namespace Foody.Controls
         private bool IsCommitted = true;
         private int recipeIndex = -1;
         private bool editMode = false;
-        private Recipe currentRecipe = new Recipe();
+        private Recipe currentRecipe;
         private bool IsNew = false;
         private TagConverter tagConverter = new TagConverter();
         private UnitConverter UnitConverter = new UnitConverter();
@@ -69,15 +69,20 @@ namespace Foody.Controls
         {
             this.InitializeComponent();
             this.InitEvents();
+            
             if (!isNew && idx >= 0 && idx < Database.AllMenus.Count)
             {
                 this.recipeIndex = idx;
                 this.currentRecipe = (Recipe)Database.AllMenus[idx].Clone();
             }
+            else
+            {
+                currentRecipe = new Recipe();
+                currentRecipe.PeopleNumber = 2;
+            }
+
             this.IsNew = isNew;
-            this.PopulateWithRecipe();
-            if (!isNew)
-                return;
+            this.PopulateWithRecipe();            
             this.EnterEditMode(true);
         }
 
@@ -139,8 +144,12 @@ namespace Foody.Controls
             this.rtbDescription.Text = this.currentRecipe.Description;
             this.rtbDescription.Enabled = edit;
             this.editMode = edit;
-            this.dgvContents.Columns[3].Visible = this.editMode;
-            this.dgvContents.Columns[4].Visible = this.editMode;
+
+            if (this.dgvContents.Columns.Count > 4)
+            {
+                this.dgvContents.Columns[3].Visible = this.editMode;
+                this.dgvContents.Columns[4].Visible = this.editMode;
+            }
         }
 
         private void InitEvents()
@@ -207,7 +216,7 @@ namespace Foody.Controls
                        this.IsCommitted = true;
                        RecipeContent recipeContent = new RecipeContent();
                        string uid = Database.contents.FirstOrDefault<Content>((Func<Content, bool>)(x => x.Name == this.dgvContents.Rows[contentId].Cells[0].Value.ToString())).uid;
-                       Unit fromString = this.UnitConverter.GetFromString(this.dgvContents.Rows[contentId].Cells[2].Value.ToString());
+                       Unit fromString = this.UnitConverter.GetFromString(this.dgvContents.Rows[contentId].Cells[2].Value?.ToString());
                        double num = double.Parse(this.dgvContents.Rows[contentId].Cells[1].Value.ToString());
                        if (string.IsNullOrEmpty(uid))
                            return;
@@ -306,6 +315,9 @@ namespace Foody.Controls
             if (isNew)
             {
                 Database.AddRecipeToDatabase(this.currentRecipe);
+                if (this.GoBack == null)
+                    return;
+                this.GoBack();
             }
             else
             {
