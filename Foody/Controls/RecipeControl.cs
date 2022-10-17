@@ -69,7 +69,7 @@ namespace Foody.Controls
         {
             this.InitializeComponent();
             this.InitEvents();
-            
+
             if (!isNew && idx >= 0 && idx < Database.AllMenus.Count)
             {
                 this.recipeIndex = idx;
@@ -82,7 +82,7 @@ namespace Foody.Controls
             }
 
             this.IsNew = isNew;
-            this.PopulateWithRecipe();            
+            this.PopulateWithRecipe();
             this.EnterEditMode(true);
         }
 
@@ -154,6 +154,14 @@ namespace Foody.Controls
 
         private void InitEvents()
         {
+
+            this.btnAddNewContent.Click += ((s, e) =>
+            {
+                AddContentPopup popup = new AddContentPopup();
+                popup.ShowPopup();
+
+            });
+
             this.btnEdit.Click += (EventHandler)((s, e) =>
            {
                if (!this.IsSaving)
@@ -199,46 +207,46 @@ namespace Foody.Controls
                    this.btnAddContent.Text = "❌";
                    this.EnterCellEditMode(contentId, array);
                    this.dgvContents.CellMouseClick += (DataGridViewCellMouseEventHandler)((sender, evt) =>
-             {
-                   if (evt.RowIndex == contentId && evt.ColumnIndex == 4)
                    {
-                       if (this.IsCommitted)
-                           return;
-                       this.btnAddContent.Text = "➕";
-                       this.RefreshRecipe();
-                       this.dgvContents.CellMouseClick += new DataGridViewCellMouseEventHandler(this.DgvContents_CellMouseClick);
-                       this.IsCommitted = true;
-                   }
-                   else
-                   {
-                       if (evt.RowIndex != contentId || evt.ColumnIndex != 3)
-                           return;
-                       this.IsCommitted = true;
-                       RecipeContent recipeContent = new RecipeContent();
-                       string uid = Database.contents.FirstOrDefault<Content>((Func<Content, bool>)(x => x.Name == this.dgvContents.Rows[contentId].Cells[0].Value.ToString())).uid;
-                       Unit fromString = this.UnitConverter.GetFromString(this.dgvContents.Rows[contentId].Cells[2].Value?.ToString());
-                       double num = double.Parse(this.dgvContents.Rows[contentId].Cells[1].Value.ToString());
-                       if (string.IsNullOrEmpty(uid))
-                           return;
-                       recipeContent.uid = uid;
-                       recipeContent.QuantityUnit = fromString;
-                       recipeContent.Quantity = num;
-                       this.currentRecipe.Contents.Add(recipeContent);
-                       this.RefreshRecipe();
-                       this.dgvContents.CellMouseClick += new DataGridViewCellMouseEventHandler(this.DgvContents_CellMouseClick);
-                   }
-               });
+                       if (evt.RowIndex == contentId && evt.ColumnIndex == 4)
+                       {
+                           if (this.IsCommitted)
+                               return;
+                           this.btnAddContent.Text = "➕";
+                           this.RefreshRecipe();
+                           this.dgvContents.CellMouseClick += new DataGridViewCellMouseEventHandler(this.DgvContents_CellMouseClick);
+                           this.IsCommitted = true;
+                       }
+                       else
+                       {
+                           if (evt.RowIndex != contentId || evt.ColumnIndex != 3)
+                               return;
+                           this.IsCommitted = true;
+                           RecipeContent recipeContent = new RecipeContent();
+                           string uid = Database.contents.FirstOrDefault<Content>((Func<Content, bool>)(x => x.Name == this.dgvContents.Rows[contentId].Cells[0].Value.ToString())).uid;
+                           Unit fromString = this.UnitConverter.GetFromString(this.dgvContents.Rows[contentId].Cells[2].Value?.ToString());
+                           double num = double.Parse(this.dgvContents.Rows[contentId].Cells[1].Value.ToString());
+                           if (string.IsNullOrEmpty(uid))
+                               return;
+                           recipeContent.uid = uid;
+                           recipeContent.QuantityUnit = fromString;
+                           recipeContent.Quantity = num;
+                           this.currentRecipe.Contents.Add(recipeContent);
+                           this.RefreshRecipe();
+                           this.dgvContents.CellMouseClick += new DataGridViewCellMouseEventHandler(this.DgvContents_CellMouseClick);
+                       }
+                   });
                    this.IsCommitted = false;
                }
            });
             this.dgvContents.CellMouseClick += new DataGridViewCellMouseEventHandler(this.DgvContents_CellMouseClick);
             this.btnBack.Click += (EventHandler)((s, e) =>
-           {
-               this.currentRecipe = (Recipe)null;
-               if (this.GoBack == null)
-                   return;
-               this.GoBack();
-           });
+            {
+                this.currentRecipe = (Recipe)null;
+                if (this.GoBack == null)
+                    return;
+                this.GoBack();
+            });
         }
 
         private void EnterCellEditMode(int erow, string[] names, int index = -1)

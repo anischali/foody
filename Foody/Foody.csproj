@@ -39,6 +39,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlHelpers.cs" />
+    <Compile Include="Controls\AddContentPopup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="!AvaloniaResources" />
+    <EmbeddedResource Include="Controls\AddContentPopup.resx">
+      <DependentUpon>AddContentPopup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\AddRecipePopup.resx" />
     <EmbeddedResource Include="Controls\ExporterPanel.resx" />
     <EmbeddedResource Include="Controls\GenerateHeader.resx" />

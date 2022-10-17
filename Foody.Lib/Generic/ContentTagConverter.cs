@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Foody.Generic
 {
-  internal class ContentTagConverter
+  public class ContentTagConverter
   {
     private readonly Dictionary<ContentTag, string> TagsToStrings = new Dictionary<ContentTag, string>();
     private readonly Dictionary<string, ContentTag> StringsToTags = new Dictionary<string, ContentTag>();

@@ -22,7 +22,7 @@ namespace Foody.Models
     [DataMember]
     public ContentTag type { get; set; }
 
-    public Content(string name, ContentTag tag, double quantity, Unit unit)
+    public Content(string name, ContentTag tag)
     {
       this.uid = Guid.NewGuid().ToString();
       this.Name = name;
