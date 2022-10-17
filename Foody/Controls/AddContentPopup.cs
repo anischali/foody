@@ -51,7 +51,7 @@ namespace Foody.Controls
         {
             this.btnAddContent.Click += (EventHandler)((s, e) =>
            {
-               if (cbContentType.SelectedIndex > 0)
+               if (cbContentType.SelectedIndex < 0 || cbContentType.SelectedIndex > Consts.contentTags.Length)
                    return;
 
                string tag = Consts.contentTags[cbContentType.SelectedIndex];
